@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gracias – Lista de verificación TD360º</title>
+  <title>Lista de verificación TD360º</title>
   <link rel="stylesheet" href="activos/estilos.css">
 </head>
 <body>
@@ -23,29 +23,166 @@
 
   <!-- Contenido principal -->
   <main class="container">
-    <section class="card intro" style="text-align:center; padding:40px;">
-      <h2>✅ ¡Gracias por completar el diagnóstico!</h2>
+
+    <!-- Intro RGPD -->
+    <section class="card intro">
+      <h2>Consentimiento RGPD</h2>
       <p>
-        Hemos recibido tus respuestas.  
-        El equipo de <strong>TD Consulting 360º</strong> las revisará con atención y se pondrá en contacto contigo para compartir el análisis y próximos pasos.
+        Este formulario recoge información estratégica para el diagnóstico TD360º.
+        Sus respuestas serán tratadas de forma confidencial, únicamente con fines
+        de evaluación y mejora de procesos.
       </p>
-      <p class="small">
-        Tu participación es fundamental para avanzar hacia una estrategia digital sólida y orientada a resultados.
-      </p>
-      <div class="actions" style="justify-content:center; margin-top:30px;">
-        <a href="index.html" class="btn primary">Volver al inicio</a>
+      <div class="rgpd check">
+        <input type="checkbox" id="rgpd" required>
+        <label for="rgpd">Confirmo que he leído y acepto la política de privacidad y el uso de mis datos conforme al RGPD.</label>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="startBtn">Comenzar</button>
       </div>
     </section>
+
+    <!-- Bloque 1 -->
+    <fieldset class="bloque" id="bloque1">
+      <legend>Bloque 1 · Dirección & Objetivos</legend>
+      <div class="q">
+        <label>¿Existen objetivos estratégicos claramente definidos?</label>
+        <table class="likert">
+          <tr>
+            <th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+          <tr>
+            <td>Definición de objetivos</td>
+            <td><input type="radio" name="b1p1" value="1"></td>
+            <td><input type="radio" name="b1p1" value="2"></td>
+            <td><input type="radio" name="b1p1" value="3"></td>
+            <td><input type="radio" name="b1p1" value="4"></td>
+            <td><input type="radio" name="b1p1" value="5"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" id="prev1">Volver</button>
+        <button class="btn primary" id="next1">Siguiente</button>
+      </div>
+    </fieldset>
+
+    <!-- Bloque 2 -->
+    <fieldset class="bloque" id="bloque2">
+      <legend>Bloque 2 · Producción & Calidad</legend>
+      <div class="q">
+        <label>¿Disponéis de control de mermas y reprocesos?</label>
+        <table class="likert">
+          <tr>
+            <th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+          <tr>
+            <td>Gestión de mermas</td>
+            <td><input type="radio" name="b2p1" value="1"></td>
+            <td><input type="radio" name="b2p1" value="2"></td>
+            <td><input type="radio" name="b2p1" value="3"></td>
+            <td><input type="radio" name="b2p1" value="4"></td>
+            <td><input type="radio" name="b2p1" value="5"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" id="prev2">Volver</button>
+        <button class="btn primary" id="next2">Siguiente</button>
+      </div>
+    </fieldset>
+
+    <!-- Bloque 3 -->
+    <fieldset class="bloque" id="bloque3">
+      <legend>Bloque 3 · Compras & Materia Prima</legend>
+      <div class="q">
+        <label>¿Cómo gestionáis la homologación de proveedores?</label>
+        <table class="likert">
+          <tr>
+            <th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+          <tr>
+            <td>Homologación de proveedores</td>
+            <td><input type="radio" name="b3p1" value="1"></td>
+            <td><input type="radio" name="b3p1" value="2"></td>
+            <td><input type="radio" name="b3p1" value="3"></td>
+            <td><input type="radio" name="b3p1" value="4"></td>
+            <td><input type="radio" name="b3p1" value="5"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" id="prev3">Volver</button>
+        <button class="btn primary" id="next3">Siguiente</button>
+      </div>
+    </fieldset>
+
+    <!-- Bloque 4 -->
+    <fieldset class="bloque" id="bloque4">
+      <legend>Bloque 4 · Cultura del Dato & Digitalización</legend>
+      <div class="q">
+        <label>¿Disponéis de integración entre sistemas de información?</label>
+        <table class="likert">
+          <tr>
+            <th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+          <tr>
+            <td>Integración de sistemas</td>
+            <td><input type="radio" name="b4p1" value="1"></td>
+            <td><input type="radio" name="b4p1" value="2"></td>
+            <td><input type="radio" name="b4p1" value="3"></td>
+            <td><input type="radio" name="b4p1" value="4"></td>
+            <td><input type="radio" name="b4p1" value="5"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" id="prev4">Volver</button>
+        <button class="btn primary" id="submitBtn">Enviar</button>
+      </div>
+    </fieldset>
+
   </main>
 
-  <!-- Pie con logos -->
-  <footer class="footer-logos">
-    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC">
-    <img src="activos/imagen/logo_td.svg" alt="TD Consulting">
-  </footer>
+  <!-- Script navegación -->
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const bloques = document.querySelectorAll(".bloque");
+    const submitBtn = document.getElementById("submitBtn");
+
+    // Mostrar bloque 1 al aceptar RGPD
+    startBtn.addEventListener("click", () => {
+      if(document.getElementById("rgpd").checked){
+        bloques[0].classList.add("active");
+        document.querySelector(".card.intro").style.display = "none";
+      } else {
+        alert("Debes aceptar el RGPD para continuar.");
+      }
+    });
+
+    // Navegación entre bloques
+    document.querySelectorAll("button[id^='next']").forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        bloques[i].classList.remove("active");
+        bloques[i+1].classList.add("active");
+      });
+    });
+
+    document.querySelectorAll("button[id^='prev']").forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        bloques[i].classList.remove("active");
+        bloques[i-1].classList.add("active");
+      });
+    });
+
+    // Botón enviar -> página gracias
+    submitBtn.addEventListener("click", () => {
+      window.location.href = "gracias.html";
+    });
+  </script>
 
 </body>
 </html>
+
 
 
 
