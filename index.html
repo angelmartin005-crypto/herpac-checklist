@@ -4,20 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de verificación TD360º</title>
-  <link rel="stylesheet" href="activos/estilos.css">
+
+  <!-- RUTA ABSOLUTA AL REPO -->
+  <base href="https://angelmartin005-crypto.github.io/lista-de-verificacion-de-herpac/">
+
+  <!-- CSS con “cache buster” -->
+  <link rel="stylesheet" href="activos/estilos.css?v=3">
 </head>
 <body>
 
   <!-- Encabezado con logos -->
   <header class="header">
-    <!-- Logo Herpac -->
     <img src="activos/imagen/logo_herpac.svg" alt="HERPAC" class="logo">
-
-    <div class="titlewrap">
-      <h1 class="title">Check List TD360º</h1>
-    </div>
-
-    <!-- Logo TD Consulting -->
+    <div class="titlewrap"><h1 class="title">Check List TD360º</h1></div>
     <img src="activos/imagen/logo_td.svg" alt="TD Consulting" class="logo">
   </header>
 
@@ -25,12 +24,12 @@
   <main class="container">
 
     <!-- Intro RGPD -->
-    <section class="card intro">
+    <section class="card intro" id="intro">
       <h2>Consentimiento RGPD</h2>
       <p>
         Este formulario recoge información estratégica para el diagnóstico TD360º.
-        Sus respuestas serán tratadas de forma confidencial, únicamente con fines
-        de evaluación y mejora de procesos.
+        Sus respuestas serán tratadas de forma confidencial y se usarán
+        exclusivamente con fines de evaluación y mejora de procesos.
       </p>
       <div class="rgpd check">
         <input type="checkbox" id="rgpd" required>
@@ -143,45 +142,34 @@
 
   </main>
 
-  <!-- Script navegación -->
+  <!-- Navegación entre bloques -->
   <script>
-    const startBtn = document.getElementById("startBtn");
-    const bloques = document.querySelectorAll(".bloque");
-    const submitBtn = document.getElementById("submitBtn");
+    const intro = document.getElementById('intro');
+    const startBtn = document.getElementById('startBtn');
+    const bloques = [...document.querySelectorAll('.bloque')];
 
-    // Mostrar bloque 1 al aceptar RGPD
-    startBtn.addEventListener("click", () => {
-      if(document.getElementById("rgpd").checked){
-        bloques[0].classList.add("active");
-        document.querySelector(".card.intro").style.display = "none";
-      } else {
-        alert("Debes aceptar el RGPD para continuar.");
-      }
+    startBtn.addEventListener('click', () => {
+      const ok = document.getElementById('rgpd').checked;
+      if(!ok){ alert('Debes aceptar el RGPD para continuar.'); return; }
+      intro.style.display = 'none';
+      bloques[0].classList.add('active');
     });
 
-    // Navegación entre bloques
-    document.querySelectorAll("button[id^='next']").forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        bloques[i].classList.remove("active");
-        bloques[i+1].classList.add("active");
-      });
-    });
+    document.getElementById('next1').onclick = () => { bloques[0].classList.remove('active'); bloques[1].classList.add('active'); };
+    document.getElementById('prev1').onclick = () => { bloques[0].classList.remove('active'); intro.style.display = 'block'; };
+    document.getElementById('next2').onclick = () => { bloques[1].classList.remove('active'); bloques[2].classList.add('active'); };
+    document.getElementById('prev2').onclick = () => { bloques[1].classList.remove('active'); bloques[0].classList.add('active'); };
+    document.getElementById('next3').onclick = () => { bloques[2].classList.remove('active'); bloques[3].classList.add('active'); };
+    document.getElementById('prev3').onclick = () => { bloques[2].classList.remove('active'); bloques[1].classList.add('active'); };
+    document.getElementById('prev4').onclick = () => { bloques[3].classList.remove('active'); bloques[2].classList.add('active'); };
 
-    document.querySelectorAll("button[id^='prev']").forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        bloques[i].classList.remove("active");
-        bloques[i-1].classList.add("active");
-      });
-    });
-
-    // Botón enviar -> página gracias
-    submitBtn.addEventListener("click", () => {
-      window.location.href = "gracias.html";
-    });
+    // Enviar -> Gracias (ruta absoluta ya cubierta por <base>)
+    document.getElementById('submitBtn').onclick = () => { window.location.href = 'gracias.html'; };
   </script>
 
 </body>
 </html>
+
 
 
 
