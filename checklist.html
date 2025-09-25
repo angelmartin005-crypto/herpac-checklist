@@ -3,50 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Check List TD360º - Herpac</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Check List TD360º – Herpac</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <header>
-    <img src="logo_herpac.png" alt="Logo Herpac" class="logo">
+  <header class="site-header">
+    <img src="logo_herpac.svg" alt="HERPAC" class="logo">
     <h1>Check List TD360º</h1>
-    <img src="logo_td.png" alt="Logo TD Consulting" class="logo">
+    <img src="logo_td.svg" alt="TD Consulting" class="logo">
   </header>
 
   <main>
-    <!-- Bloque 1 -->
-    <section>
-      <h2>Bloque 1 · Dirección & Objetivos</h2>
-      <p>Este bloque evalúa cómo se definen, despliegan y ejecutan los objetivos estratégicos. Buscamos evidencias de foco, cadencia y responsabilidad (accountability) para traducir la intención en resultados medibles a 6/12/24 meses.</p>
-      <p><strong>Valore del 1 al 5</strong> el grado de implantación/madurez. El texto entre paréntesis aclara el concepto.</p>
-      <!-- Aquí irán las preguntas del bloque 1 -->
-    </section>
+    <!-- Stepper y Bloques 1–4 (tu contenido validado) -->
 
-    <!-- Bloque 2 -->
-    <section>
-      <h2>Bloque 2 · Producción & Calidad</h2>
-      <p>Este bloque analiza la madurez de procesos productivos, control de calidad, planificación de recursos y trazabilidad de lotes.</p>
-      <!-- Aquí irán las preguntas del bloque 2 -->
-    </section>
+    <!-- FORMULARIO: usa SIEMPRE este form con este id/action/method -->
+    <form id="checklistForm" action="https://formspree.io/f/xqadrqzl" method="POST">
+      <!-- aquí van todos tus campos de los 4 bloques -->
 
-    <!-- Bloque 3 -->
-    <section>
-      <h2>Bloque 3 · Compras & Materia Prima</h2>
-      <p>Este bloque revisa la homologación de proveedores, control de lead times, gestión de inventarios y comparativas de precios.</p>
-      <!-- Aquí irán las preguntas del bloque 3 -->
-    </section>
+      <!-- redirecciones de respaldo -->
+      <input type="hidden" name="redirect" value="">
+      <input type="hidden" name="_redirect" value="">
+      <input type="hidden" name="_next" value="">
 
-    <!-- Bloque 4 -->
-    <section>
-      <h2>Bloque 4 · Cultura del Dato & Digitalización</h2>
-      <p>Este bloque mide el grado de digitalización, uso de ERP/BI, integración de sistemas y cultura del dato en la organización.</p>
-      <!-- Aquí irán las preguntas del bloque 4 -->
-    </section>
-
-    <form action="gracias.html" method="POST">
-      <button type="submit">Enviar</button>
+      <!-- botón enviar (dentro o fuera del form). Si lo dejas dentro, usa type="submit". -->
+      <div class="acciones">
+        <button id="submitBtn" type="submit">Enviar</button>
+      </div>
     </form>
   </main>
+
+  <!-- Script de envío robusto + redirect correcto en GitHub Pages -->
+  <script>
+  (function(){
+    var form = document.getElementById('checklistForm');
+    if(!form) return;
+
+    function basePath(){
+      var p = window.location.pathname;
+      return p.endsWith('/') ? p : p.replace(/[^\/]+$/, '/');
+    }
+    var gracias = window.location.origin + basePath() + 'gracias.html';
+
+    function setRedirectHidden(){
+      ['redirect','_redirect','_next'].forEach(function(name){
+        var el = form.querySelector('input[name="'+name+'"]');
+        if(!el){ el = document.createElement('input'); el.type='hidden'; el.name=name; form.appendChild(el); }
+        el.value = gracias;
+      });
+    }
+    setRedirectHidden();
+
+    // Si el botón estuviera fuera del form en tu maqueta, este puente lo enviaría igual:
+    var btn = document.getElementById('submitBtn');
+    if(btn){
+      btn.addEventListener('click', function(ev){
+        // Si es type=button, forzamos submit; si es submit, no hace falta
+        if (btn.type === 'button') {
+          ev.preventDefault();
+          if(form.requestSubmit) form.requestSubmit(); else form.submit();
+        }
+      });
+    }
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      setRedirectHidden();
+      try{
+        var fd = new FormData(form);
+        await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:fd });
+        window.location.href = gracias;
+      }catch(err){
+        form.submit(); // fallback duro
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
+
 
