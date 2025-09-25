@@ -4,51 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de verificación TD360º – Consentimiento</title>
-  <link rel="stylesheet" href="activos/estilos.css">
+  <link rel="stylesheet" href="activos/styles.css">
 </head>
 <body>
- <header class="header">
-  <!-- Logo Herpac -->
-  <img src="activos/logo_herpac.svg" alt="HERPAC" class="logo">
 
-  <!-- Título central -->
-  <div class="titlewrap">
-    <h1 class="title">Lista de verificación TD360º</h1>
-  </div>
-
-  <!-- Logo TD Consulting -->
-  <img src="activos/logo_td.svg" alt="TD Consulting" class="logo">
-</header>
-
-
-  <div class="titlewrap">
-  <h1 class="title">Lista de verificación TD360º</h1>
-</div>
-
-    <!-- Logo TD Consulting -->
-    <img src="activos/logotipo_td.svg" alt="TD Consulting" class="logo">
+  <!-- Cabecera con logos y título -->
+  <header class="header">
+    <img src="activos/logo_herpac.svg" alt="HERPAC" class="logo">
+    <div class="titlewrap">
+      <h1 class="title">Lista de verificación TD360º</h1>
+    </div>
+    <img src="activos/logo_td.svg" alt="TD Consulting" class="logo">
   </header>
 
-  <main>
-    <section>
-      <h2>Consentimiento y RGPD</h2>
+  <!-- Contenido principal -->
+  <main class="container">
+    <section class="card intro">
+      <h2>Consentimiento RGPD</h2>
       <p>
-        Sus respuestas serán tratadas conforme al Reglamento General de Protección de Datos (RGPD) 
-        y bajo las garantías de seguridad de la información que aporta TD Consulting, certificada en ISO 27001. 
-        La información recabada será utilizada exclusivamente con fines de diagnóstico y consultoría 
-        en el marco del proyecto TD360º, no siendo cedida a terceros ni empleada para otros fines.
+        Para continuar con la evaluación es necesario aceptar la política de privacidad y protección de datos (RGPD). 
+        Sus respuestas serán tratadas de manera confidencial y exclusivamente para fines de diagnóstico interno.
       </p>
-
-      <label>
-        <input type="checkbox" id="acepto">
-        He leído y acepto el <a href="activos/texto_rgpd.html" target="_blank">texto completo RGPD</a>.
-      </label>
-
-      <br><br>
-      <button onclick="window.location.href='checklist.html'">Comenzar diagnóstico</button>
+      <form action="checklist.html" method="get">
+        <div class="rgpd">
+          <label class="check">
+            <input type="checkbox" required>
+            <span>He leído y acepto la política de privacidad y protección de datos (RGPD).</span>
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn primary">Aceptar y comenzar</button>
+        </div>
+      </form>
     </section>
   </main>
+
+  <!-- Footer logos -->
+  <footer class="footer-logos">
+    <img src="activos/logo_herpac.svg" alt="HERPAC">
+    <img src="activos/logo_td.svg" alt="TD Consulting">
+  </footer>
+
 </body>
 </html>
+
 
 
