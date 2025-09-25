@@ -7,11 +7,23 @@
   <link rel="stylesheet" href="activos/estilos.css">
 </head>
 <body>
-  <header>
-    <!-- Logo HERPAC -->
-    <img src="activos/logotipo_herpac.svg" alt="HERPAC" class="logo">
-    
-    <h1>Check List TD360º</h1>
+ <header class="header">
+  <!-- Logo Herpac -->
+  <img src="activos/logo_herpac.svg" alt="HERPAC" class="logo">
+
+  <!-- Título central -->
+  <div class="titlewrap">
+    <h1 class="title">Lista de verificación TD360º</h1>
+  </div>
+
+  <!-- Logo TD Consulting -->
+  <img src="activos/logo_td.svg" alt="TD Consulting" class="logo">
+</header>
+
+
+  <div class="titlewrap">
+  <h1 class="title">Lista de verificación TD360º</h1>
+</div>
 
     <!-- Logo TD Consulting -->
     <img src="activos/logotipo_td.svg" alt="TD Consulting" class="logo">
