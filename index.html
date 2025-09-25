@@ -3,50 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de verificación TD360º – Consentimiento</title>
-  <link rel="stylesheet" href="activos/styles.css">
+  <title>Lista de verificación TD360º</title>
+  <link rel="stylesheet" href="activos/estilos.css">
 </head>
 <body>
-
-  <!-- Cabecera con logos y título -->
+  <!-- Cabecera -->
   <header class="header">
-    <img src="activos/logo_herpac.svg" alt="HERPAC" class="logo">
+    <!-- Logo Herpac -->
+    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC" class="logo">
+
+    <!-- Título -->
     <div class="titlewrap">
-      <h1 class="title">Lista de verificación TD360º</h1>
+      <h1 class="title">Check List TD360º</h1>
     </div>
-    <img src="activos/logo_td.svg" alt="TD Consulting" class="logo">
+
+    <!-- Logo TD Consulting -->
+    <img src="activos/imagen/logo_td.svg" alt="TD Consulting" class="logo">
   </header>
 
   <!-- Contenido principal -->
   <main class="container">
+    <!-- RGPD -->
     <section class="card intro">
       <h2>Consentimiento RGPD</h2>
       <p>
-        Para continuar con la evaluación es necesario aceptar la política de privacidad y protección de datos (RGPD). 
-        Sus respuestas serán tratadas de manera confidencial y exclusivamente para fines de diagnóstico interno.
+        Este formulario recoge información estratégica para el diagnóstico TD360º. 
+        Sus respuestas serán tratadas de forma confidencial, únicamente con fines de 
+        evaluación y mejora de procesos.
       </p>
-      <form action="checklist.html" method="get">
-        <div class="rgpd">
-          <label class="check">
-            <input type="checkbox" required>
-            <span>He leído y acepto la política de privacidad y protección de datos (RGPD).</span>
-          </label>
-        </div>
-        <div class="actions">
-          <button type="submit" class="btn primary">Aceptar y comenzar</button>
-        </div>
-      </form>
+      <div class="rgpd check">
+        <input type="checkbox" id="acepto" required>
+        <label for="acepto">
+          Confirmo que he leído y acepto la política de privacidad y el uso de mis datos 
+          conforme al RGPD.
+        </label>
+      </div>
+      <div class="actions">
+        <button class="btn primary" onclick="mostrarBloque(1)">Comenzar</button>
+      </div>
+    </section>
+
+    <!-- Bloque 1 -->
+    <section id="bloque1" class="bloque">
+      <fieldset>
+        <legend>Bloque 1 · Dirección & Objetivos</legend>
+        <table class="likert">
+          <thead>
+            <tr>
+              <th>Pregunta</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Existen objetivos estratégicos claramente definidos?</td>
+              <td><input type="radio" name="q1" value="1"></td>
+              <td><input type="radio" name="q1" value="2"></td>
+              <td><input type="radio" name="q1" value="3"></td>
+              <td><input type="radio" name="q1" value="4"></td>
+              <td><input type="radio" name="q1" value="5"></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <div class="actions">
+        <button class="btn secondary" onclick="mostrarBloque(0)">Volver</button>
+        <button class="btn primary" onclick="mostrarBloque(2)">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Bloque 2 -->
+    <section id="bloque2" class="bloque">
+      <fieldset>
+        <legend>Bloque 2 · Producción & Calidad</legend>
+        <table class="likert">
+          <thead>
+            <tr>
+              <th>Pregunta</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Disponéis de control de mermas y reprocesos?</td>
+              <td><input type="radio" name="q2" value="1"></td>
+              <td><input type="radio" name="q2" value="2"></td>
+              <td><input type="radio" name="q2" value="3"></td>
+              <td><input type="radio" name="q2" value="4"></td>
+              <td><input type="radio" name="q2" value="5"></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <div class="actions">
+        <button class="btn secondary" onclick="mostrarBloque(1)">Volver</button>
+        <button class="btn primary" onclick="mostrarBloque(3)">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Bloque 3 -->
+    <section id="bloque3" class="bloque">
+      <fieldset>
+        <legend>Bloque 3 · Compras & Materia Prima</legend>
+        <table class="likert">
+          <thead>
+            <tr>
+              <th>Pregunta</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Cómo gestionáis la homologación de proveedores?</td>
+              <td><input type="radio" name="q3" value="1"></td>
+              <td><input type="radio" name="q3" value="2"></td>
+              <td><input type="radio" name="q3" value="3"></td>
+              <td><input type="radio" name="q3" value="4"></td>
+              <td><input type="radio" name="q3" value="5"></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <div class="actions">
+        <button class="btn secondary" onclick="mostrarBloque(2)">Volver</button>
+        <button class="btn primary" onclick="mostrarBloque(4)">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Bloque 4 -->
+    <section id="bloque4" class="bloque">
+      <fieldset>
+        <legend>Bloque 4 · Cultura del Dato & Digitalización</legend>
+        <table class="likert">
+          <thead>
+            <tr>
+              <th>Pregunta</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Disponéis de integración entre sistemas de información?</td>
+              <td><input type="radio" name="q4" value="1"></td>
+              <td><input type="radio" name="q4" value="2"></td>
+              <td><input type="radio" name="q4" value="3"></td>
+              <td><input type="radio" name="q4" value="4"></td>
+              <td><input type="radio" name="q4" value="5"></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <div class="actions">
+        <button class="btn secondary" onclick="mostrarBloque(3)">Volver</button>
+        <button class="btn primary" onclick="window.location.href='gracias.html'">Enviar</button>
+      </div>
     </section>
   </main>
 
-  <!-- Footer logos -->
-  <footer class="footer-logos">
-    <img src="activos/logo_herpac.svg" alt="HERPAC">
-    <img src="activos/logo_td.svg" alt="TD Consulting">
-  </footer>
+  <!-- Script navegación -->
+  <script>
+    function mostrarBloque(n) {
+      // Oculta todos los bloques
+      docum
 
-</body>
-</html>
 
 
 
