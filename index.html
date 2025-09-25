@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check List TD360º — Consentimiento</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <img class="logo" src="assets/img/logo_herpac.png" alt="HERPAC" />
+    <div class="titlewrap"><h1 class="title">Check List TD360º</h1></div>
+    <img class="logo" src="assets/img/logo_td.png" alt="TD Consulting" />
+  </header>
+
+  <main class="container">
+    <section class="card fieldset">
+      <h2 class="legend">Consentimiento y RGPD</h2>
+      <p>
+        Sus respuestas serán tratadas conforme al Reglamento General de Protección de Datos (RGPD)
+        y bajo las garantías de seguridad de la información que aporta TD Consulting, certificada en ISO 27001.
+        La información recabada será utilizada exclusivamente con fines de diagnóstico y consultoría en el marco
+        del proyecto TD360º, no siendo cedida a terceros ni empleada para otros fines.
+      </p>
+
+      <label class="check" style="display:flex;gap:8px;align-items:flex-start;margin:12px 0;">
+        <input type="checkbox" id="rgpd_ok" />
+        <span>He leído y acepto el <a href="#rgpd-detalle">texto completo RGPD</a>.</span>
+      </label>
+
+      <button type="button" id="btn-comenzar" class="btn-enviar" disabled>Comenzar diagnóstico</button>
+      <details id="rgpd-detalle" class="small" style="margin-top:12px;"><summary><strong>Texto completo RGPD</strong></summary><p style="margin-top:8px;">Conforme a lo previsto en el nuevo Reglamento General de Protección de Datos de entrada en vigor el 25 de mayo de 2018, sus datos están incluidos en un fichero cuyo nivel de seguridad cumple el RGPD y su finalidad es el CONTROL Y GESTION DE CLIENTES/PROVEEDORES Y POTENCIALES CLIENTES, ASESORAMIENTO E INFORMACION ACERCA DE LOS PRODUCTOS Y SERVICIOS DE LA EMPRESA Y LA FIDELIZACION DE CLIENTES. A su vez, podrá ejercitar los derechos de acceso, rectificación, supresión (derecho al olvido), oposición y de revocación del consentimiento incluidos en el Reglamento General de Protección de Datos de forma gratuita dirigiéndose a la siguiente dirección : C/ Escritora Gertrudis Gómez de Avellaneda 28, CP: 29196 Málaga o a rgpd@topdigital.com junto con prueba válida en derecho, como fotocopia del D.N.I. e indicando en el asunto "PROTECCIÓN DE DATOS". o través del siguiente enlace web (ejericioderechos)</p></details>
+</section>
+  </main>
+
+  <script>
+    (function(){
+      var ok = document.getElementById('rgpd_ok');
+      var go = document.getElementById('btn-comenzar');
+      if(ok && go){
+        go.disabled = !ok.checked;
+        ok.addEventListener('change', function(){ go.disabled = !ok.checked; });
+        go.addEventListener('click', function(){
+          // Guardamos consentimiento y pasamos al formulario
+          try { sessionStorage.setItem('rgpd_ok', '1'); } catch(e){}
+          window.location.href = 'checklist.html';
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (function(){
+      var anchorLinks = document.querySelectorAll('a[href="#rgpd-detalle"]');
+      for (var i=0;i<anchorLinks.length;i++){
+        anchorLinks[i].addEventListener('click', function(e){
+          e.preventDefault();
+          var d = document.getElementById('rgpd-detalle');
+          if(d){
+            if(d.tagName.toLowerCase()==='details'){ d.open = true; }
+            d.scrollIntoView({behavior:'smooth'});
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
