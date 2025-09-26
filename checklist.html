@@ -1,84 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Check List TD360º – Herpac</title>
-  <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check List TD360º – Diagnóstico</title>
+
+  <base href="https://angelmartin005-crypto.github.io/herpac-checklist/">
+  <link rel="stylesheet" href="activos/estilos.css?v=6" />
 </head>
 <body>
-  <header class="site-header">
-    <img src="logo_herpac.svg" alt="HERPAC" class="logo">
-    <h1>Check List TD360º</h1>
-    <img src="logo_td.svg" alt="TD Consulting" class="logo">
+  <header class="header">
+    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC" class="logo" />
+    <div class="titlewrap"><h1 class="title">Check List TD360º</h1></div>
+    <img src="activos/imagen/logo_td.svg" alt="TD Consulting" class="logo" />
   </header>
 
-  <main>
-    <!-- Stepper y Bloques 1–4 (tu contenido validado) -->
-
-    <!-- FORMULARIO: usa SIEMPRE este form con este id/action/method -->
-    <form id="checklistForm" action="https://formspree.io/f/xqadrqzl" method="POST">
-      <!-- aquí van todos tus campos de los 4 bloques -->
-
-      <!-- redirecciones de respaldo -->
-      <input type="hidden" name="redirect" value="">
-      <input type="hidden" name="_redirect" value="">
-      <input type="hidden" name="_next" value="">
-
-      <!-- botón enviar (dentro o fuera del form). Si lo dejas dentro, usa type="submit". -->
-      <div class="acciones">
-        <button id="submitBtn" type="submit">Enviar</button>
+  <main class="container">
+    <section class="card">
+      <!-- Stepper -->
+      <div class="stepper">
+        <button type="button" class="step active" data-step="1">1 · Dirección & Objetivos</button>
+        <button type="button" class="step" data-step="2">2 · Producción & Calidad</button>
+        <button type="button" class="step" data-step="3">3 · Compras & Materia Prima</button>
+        <button type="button" class="step" data-step="4">4 · Cultura del Dato & Digitalización</button>
       </div>
-    </form>
+
+      <!-- Formulario a Formspree -->
+      <form id="frm" action="https://formspree.io/f/xqadrqzl" method="POST">
+        <!-- Redirección tras enviar -->
+        <input type="hidden" name="_redirect" value="https://angelmartin005-crypto.github.io/herpac-checklist/gracias.html" />
+
+        <!-- ===== Bloque 1 ===== -->
+        <fieldset class="bloque active" id="b1">
+          <legend>Bloque 1 · Dirección & Objetivos</legend>
+
+          <div class="q">
+            <label>¿Existen objetivos estratégicos claramente definidos?</label>
+            <table class="likert">
+              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+              <tr>
+                <td>Definición de objetivos</td>
+                <td><input type="radio" name="b1_p1" value="1" required></td>
+                <td><input type="radio" name="b1_p1" value="2"></td>
+                <td><input type="radio" name="b1_p1" value="3"></td>
+                <td><input type="radio" name="b1_p1" value="4"></td>
+                <td><input type="radio" name="b1_p1" value="5"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn secondary" data-prev>Volver</button>
+            <button type="button" class="btn primary" data-next>Siguiente</button>
+          </div>
+        </fieldset>
+
+        <!-- ===== Bloque 2 ===== -->
+        <fieldset class="bloque" id="b2">
+          <legend>Bloque 2 · Producción & Calidad</legend>
+
+          <div class="q">
+            <label>¿Disponéis de control de mermas y reprocesos?</label>
+            <table class="likert">
+              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+              <tr>
+                <td>Gestión de mermas</td>
+                <td><input type="radio" name="b2_p1" value="1" required></td>
+                <td><input type="radio" name="b2_p1" value="2"></td>
+                <td><input type="radio" name="b2_p1" value="3"></td>
+                <td><input type="radio" name="b2_p1" value="4"></td>
+                <td><input type="radio" name="b2_p1" value="5"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn secondary" data-prev>Volver</button>
+            <button type="button" class="btn primary" data-next>Siguiente</button>
+          </div>
+        </fieldset>
+
+        <!-- ===== Bloque 3 ===== -->
+        <fieldset class="bloque" id="b3">
+          <legend>Bloque 3 · Compras & Materia Prima</legend>
+
+          <div class="q">
+            <label>¿Cómo gestionáis la homologación de proveedores?</label>
+            <table class="likert">
+              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+              <tr>
+                <td>Homologación de proveedores</td>
+                <td><input type="radio" name="b3_p1" value="1" required></td>
+                <td><input type="radio" name="b3_p1" value="2"></td>
+                <td><input type="radio" name="b3_p1" value="3"></td>
+                <td><input type="radio" name="b3_p1" value="4"></td>
+                <td><input type="radio" name="b3_p1" value="5"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn secondary" data-prev>Volver</button>
+            <button type="button" class="btn primary" data-next>Siguiente</button>
+          </div>
+        </fieldset>
+
+        <!-- ===== Bloque 4 ===== -->
+        <fieldset class="bloque" id="b4">
+          <legend>Bloque 4 · Cultura del Dato & Digitalización</legend>
+
+          <div class="q">
+            <label>¿Disponéis de integración entre sistemas de información?</label>
+            <table class="likert">
+              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+              <tr>
+                <td>Integración de sistemas</td>
+                <td><input type="radio" name="b4_p1" value="1" required></td>
+                <td><input type="radio" name="b4_p1" value="2"></td>
+                <td><input type="radio" name="b4_p1" value="3"></td>
+                <td><input type="radio" name="b4_p1" value="4"></td>
+                <td><input type="radio" name="b4_p1" value="5"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn secondary" data-prev>Volver</button>
+            <button type="submit" class="btn primary">Enviar</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
   </main>
 
-  <!-- Script de envío robusto + redirect correcto en GitHub Pages -->
+  <footer class="footer-logos">
+    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC">
+    <img src="activos/imagen/logo_td.svg" alt="TD Consulting">
+  </footer>
+
   <script>
-  (function(){
-    var form = document.getElementById('checklistForm');
-    if(!form) return;
+    // Navegación entre bloques
+    const blocks = [ 'b1','b2','b3','b4' ].map(id => document.getElementById(id));
+    const steps  = Array.from(document.querySelectorAll('.stepper .step'));
 
-    function basePath(){
-      var p = window.location.pathname;
-      return p.endsWith('/') ? p : p.replace(/[^\/]+$/, '/');
+    function show(idx){
+      blocks.forEach((b,i)=> b.classList.toggle('active', i===idx));
+      steps.forEach((s,i)=> s.classList.toggle('active', i===idx));
+      window.scrollTo({top:0,behavior:'smooth'});
     }
-    var gracias = window.location.origin + basePath() + 'gracias.html';
-
-    function setRedirectHidden(){
-      ['redirect','_redirect','_next'].forEach(function(name){
-        var el = form.querySelector('input[name="'+name+'"]');
-        if(!el){ el = document.createElement('input'); el.type='hidden'; el.name=name; form.appendChild(el); }
-        el.value = gracias;
-      });
-    }
-    setRedirectHidden();
-
-    // Si el botón estuviera fuera del form en tu maqueta, este puente lo enviaría igual:
-    var btn = document.getElementById('submitBtn');
-    if(btn){
-      btn.addEventListener('click', function(ev){
-        // Si es type=button, forzamos submit; si es submit, no hace falta
-        if (btn.type === 'button') {
-          ev.preventDefault();
-          if(form.requestSubmit) form.requestSubmit(); else form.submit();
-        }
-      });
-    }
-
-    form.addEventListener('submit', async function(e){
-      e.preventDefault();
-      setRedirectHidden();
-      try{
-        var fd = new FormData(form);
-        await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:fd });
-        window.location.href = gracias;
-      }catch(err){
-        form.submit(); // fallback duro
-      }
+    steps.forEach((btn,i)=> btn.addEventListener('click',()=>show(i)));
+    document.querySelectorAll('[data-next]').forEach(btn=>btn.onclick = ()=>{
+      const cur = blocks.findIndex(b=>b.classList.contains('active'));
+      show(Math.min(cur+1, blocks.length-1));
     });
-  })();
+    document.querySelectorAll('[data-prev]').forEach(btn=>btn.onclick = ()=>{
+      const cur = blocks.findIndex(b=>b.classList.contains('active'));
+      show(Math.max(cur-1, 0));
+    });
   </script>
 </body>
 </html>
+
 
 
