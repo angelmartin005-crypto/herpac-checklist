@@ -1,384 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check List TD360º</title>
-
-  <!-- BASE con barra final y exacto nombre del repo -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- BASE con barra final y nombre exacto del repo -->
   <base href="https://angelmartin005-crypto.github.io/herpac-checklist/">
+  <title>Check List TD360º</title>
 
   <!-- CSS con versión para romper caché -->
   <link rel="stylesheet" href="activos/estilos.css?v=7">
 </head>
 <body>
 
-  <!-- Header con logos -->
+  <!-- ====== Cabecera ====== -->
   <header class="header">
-    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC" class="logo">
-    <div class="titlewrap"><h1 class="title">Check List TD360º</h1></div>
-    <img src="activos/imagen/logo_td.svg" alt="TD Consulting" class="logo">
+    <img class="logo" src="activos/logotipo_herpac.svg" alt="HERPAC">
+    <div class="titlewrap">
+      <h1 class="title">Check List TD360º</h1>
+    </div>
+    <img class="logo" src="activos/logo_td.svg" alt="TD Consulting">
   </header>
 
-  <main class="container">
+  <div class="container">
 
-    <!-- ================== PANTALLA RGPD (inicio) ================== -->
-    <section class="card intro" id="pantalla-rgpd">
+    <!-- ====== Tarjeta RGPD (pantalla de entrada) ====== -->
+    <section class="card intro" id="rgpd">
       <h2>Consentimiento RGPD</h2>
       <p>
-        Sus respuestas se tratarán conforme al Reglamento General de Protección de Datos (RGPD) y bajo las garantías de seguridad de la información que aporta TD Consulting, certificada en ISO 27001. La información recabada será utilizada exclusivamente con fines de diagnóstico y consultoría en el marco del proyecto TD360º, no siendo cedida a terceros ni empleada para otros fines.
+        Sus respuestas se tratarán conforme al RGPD (ISO 27001), únicamente para el diagnóstico TD360º,
+        sin cesión a terceros.
       </p>
 
-      <div class="rgpd check">
-        <input type="checkbox" id="rgpd_ok">
-        <label for="rgpd_ok">
-          He leído y acepto el
-          <a href="#rgpd-texto" onclick="document.getElementById('rgpd_det').open = true">texto completo RGPD</a>.
+      <div class="rgpd">
+        <label class="check">
+          <input id="acepto" type="checkbox" required>
+          <span>He leído y acepto el <a href="#rgpd-texto" title="Abrir texto completo">texto completo RGPD</a>.</span>
         </label>
+
+        <!-- texto completo RGPD (plegado) -->
+        <details id="rgpd-texto">
+          <summary>Ver texto completo</summary>
+          <p>
+            Conforme al Reglamento General de Protección de Datos (RGPD), sus datos están incluidos en un fichero
+            cuyo nivel de seguridad cumple el RGPD y su finalidad es el CONTROL Y GESTIÓN DE CLIENTES/PROVEEDORES
+            Y POTENCIALES CLIENTES, ASESORAMIENTO E INFORMACIÓN ACERCA DE LOS PRODUCTOS Y SERVICIOS DE LA EMPRESA
+            Y LA FIDELIZACIÓN DE CLIENTES. Podrá ejercitar los derechos de acceso, rectificación, supresión
+            (derecho al olvido), oposición y revocación del consentimiento dirigiéndose a:
+            C/ Escritora Gertrudis Gómez de Avellaneda 28, 29196 Málaga,
+            o a <a href="mailto:rgpd@topdigital.com">rgpd@topdigital.com</a>, junto con prueba válida en derecho
+            (p.ej., D.N.I.), indicando en el asunto “PROTECCIÓN DE DATOS”. También a través del enlace web
+            indicado para ejercicio de derechos.
+          </p>
+        </details>
       </div>
 
-      <!-- Texto completo RGPD (plegable) -->
-      <details id="rgpd_det" class="small" style="margin-top:10px;">
-        <summary id="rgpd-texto">Texto completo RGPD</summary>
-        <p>
-          Conforme a lo previsto en el nuevo Reglamento General de Protección de Datos de entrada en vigor el 25 de mayo de 2018, sus datos están incluidos en un fichero cuyo nivel de seguridad cumple el RGPD y su finalidad es el CONTROL Y GESTION DE CLIENTES/PROVEEDORES Y POTENCIALES CLIENTES, ASESORAMIENTO E INFORMACION ACERCA DE LOS PRODUCTOS Y SERVICIOS DE LA EMPRESA Y LA FIDELIZACION DE CLIENTES. A su vez, podrá ejercitar los derechos de acceso, rectificación, supresión (derecho al olvido), oposición y de revocación del consentimiento incluidos en el Reglamento General de Protección de Datos de forma gratuita dirigiéndose a la siguiente dirección : C/ Escritora Gertrudis Gómez de Avellaneda 28, CP: 29196 Málaga o a rgpd@topdigital.com junto con prueba válida en derecho, como fotocopia del D.N.I. e indicando en el asunto "PROTECCIÓN DE DATOS". o través del siguiente enlace web (ejericioderechos)
-        </p>
-      </details>
-
-      <div class="actions" style="justify-content:flex-end">
-        <button class="btn primary" id="btn-comenzar">Comenzar diagnóstico</button>
+      <div class="actions">
+        <span class="small">Debes aceptar el RGPD para comenzar.</span>
+        <button id="btnComenzar" class="btn primary" disabled>Comenzar</button>
       </div>
     </section>
-    <!-- ================== /PANTALLA RGPD ================== -->
 
+    <!-- ====== Navegación de bloques ====== -->
+    <nav class="stepper" aria-label="Bloques" style="display:none" id="tabs">
+      <button data-tab="b1" class="active">1 · Dirección & Objetivos</button>
+      <button data-tab="b2">2 · Producción & Calidad</button>
+      <button data-tab="b3">3 · Compras & Materia Prima</button>
+      <button data-tab="b4">4 · Cultura del Dato & Digitalización</button>
+    </nav>
 
-    <!-- ================== CHECKLIST TD360º ================== -->
-    <section class="card" id="seccion-checklist" style="display:none;">
-      <!-- Stepper -->
-      <div class="stepper" id="stepper">
-        <button type="button" class="step active" data-step="0">1 · Dirección & Objetivos</button>
-        <button type="button" class="step" data-step="1">2 · Producción & Calidad</button>
-        <button type="button" class="step" data-step="2">3 · Compras & Materia Prima</button>
-        <button type="button" class="step" data-step="3">4 · Cultura del Dato & Digitalización</button>
+    <!-- ====== FORMULARIO ÚNICO (Formspree + redirect a /gracias.html) ====== -->
+    <form id="formTD360" action="https://formspree.io/f/xqadrqzl" method="POST" style="display:none">
+      <input type="hidden" name="_redirect" value="gracias.html">
+
+      <!-- ========================= BLOQUE 1 — DIRECCIÓN & OBJETIVOS (validado) ========================= -->
+      <section id="b1" class="bloque active">
+        <fieldset>
+          <legend>Dirección & Objetivos – escala Likert</legend>
+          <p class="small">
+            Valore del 1 al 5 el grado de implantación/madurez. El texto entre paréntesis aclara el concepto.
+          </p>
+          <table class="likert">
+            <thead>
+              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>¿Disponéis de un plan estratégico formal con metas cuantificadas y horizonte temporal definido?</td>
+                <td><input type="radio" name="dir_plan_estrategico" value="1" required></td>
+                <td><input type="radio" name="dir_plan_estrategico" value="2"></td>
+                <td><input type="radio" name="dir_plan_estrategico" value="3"></td>
+                <td><input type="radio" name="dir_plan_estrategico" value="4"></td>
+                <td><input type="radio" name="dir_plan_estrategico" value="5"></td>
+              </tr>
+              <tr>
+                <td>¿Tenéis indicadores (KPIs) que miden el avance hacia los objetivos? ¿Se revisan con periodicidad establecida?</td>
+                <td><input type="radio" name="dir_kpi_revision" value="1" required></td>
+                <td><input type="radio" name="dir_kpi_revision" value="2"></td>
+                <td><input type="radio" name="dir_kpi_revision" value="3"></td>
+                <td><input type="radio" name="dir_kpi_revision" value="4"></td>
+                <td><input type="radio" name="dir_kpi_revision" value="5"></td>
+              </tr>
+              <tr>
+                <td>¿Los objetivos estratégicos se comunican de forma clara y accesible a toda la organización?</td>
+                <td><input type="radio" name="dir_comunicacion" value="1" required></td>
+                <td><input type="radio" name="dir_comunicacion" value="2"></td>
+                <td><input type="radio" name="dir_comunicacion" value="3"></td>
+                <td><input type="radio" name="dir_comunicacion" value="4"></td>
+                <td><input type="radio" name="dir_comunicacion" value="5"></td>
+              </tr>
+              <tr>
+                <td>¿Están los objetivos desplegados por áreas/equipos (OKR/KPI), con metas claras, cadencia de revisión y responsables definidos?</td>
+                <td><input type="radio" name="dir_despliegue_objetivos" value="1" required></td>
+                <td><input type="radio" name="dir_despliegue_objetivos" value="2"></td>
+                <td><input type="radio" name="dir_despliegue_objetivos" value="3"></td>
+                <td><input type="radio" name="dir_despliegue_objetivos" value="4"></td>
+                <td><input type="radio" name="dir_despliegue_objetivos" value="5"></td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+
+        <fieldset>
+          <legend>Top tres procesos de fricción</legend>
+          <p class="small">Indique los tres procesos que más fricción generan actualmente (breve descripción e impacto).</p>
+          <div class="q">
+            <label>Proceso 1</label>
+            <input type="text" name="dir_proc1" placeholder="Ej.: Preparación de pedidos">
+            <textarea name="dir_desc1" placeholder="¿Qué pasa? ¿Dónde se atasca?"></textarea>
+            <select name="dir_imp1"><option value="">Seleccione…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select>
+          </div>
+          <div class="q">
+            <label>Proceso 2</label>
+            <input type="text" name="dir_proc2" placeholder="Ej.: Recepción de materias primas">
+            <textarea name="dir_desc2" placeholder="¿Qué pasa? ¿Dónde se atasca?"></textarea>
+            <select name="dir_imp2"><option value="">Seleccione…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select>
+          </div>
+          <div class="q">
+            <label>Proceso 3</label>
+            <input type="text" name="dir_proc3" placeholder="Ej.: Cierre mensual / Control de calidad">
+            <textarea name="dir_desc3" placeholder="¿Qué pasa? ¿Dónde se atasca?"></textarea>
+            <select name="dir_imp3"><option value="">Seleccione…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preguntas estratégicas (6/12/24 meses)</legend>
+          <div class="q"><label>Para cumplir con IGP y Gusto del Sur: ¿cómo gestionáis hoy la trazabilidad desde la recepción hasta el producto final?</label><textarea name="dir_est1"></textarea></div>
+          <div class="q"><label>¿Qué oportunidades de automatización/digitalización veis para reducir errores y optimizar controles de calidad?</label><textarea name="dir_est2"></textarea></div>
+          <div class="q"><label>¿Cómo replicar y transmitir el conocimiento tradicional al crecer la compañía?</label><textarea name="dir_est3"></textarea></div>
+          <div class="q"><label>¿Qué papel puede jugar la tecnología sin perder la esencia (estandarización, formación guiada, soporte digital)?</label><textarea name="dir_est4"></textarea></div>
+        </fieldset>
+      </section>
+      <!-- (Bloque 1 basado en tus masters) :contentReference[oaicite:5]{index=5} -->
+
+      <!-- ========================= BLOQUE 2 — PRODUCCIÓN & CALIDAD (validado) ========================= -->
+      <section id="b2" class="bloque">
+        <fieldset>
+          <legend>A) Evaluación de madurez – escala Likert</legend>
+          <table class="likert">
+            <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>¿Disponéis de escandallos y medición de rendimientos por corte/producto?</td>
+                <td><input type="radio" name="m2_q1" value="1"></td>
+                <td><input type="radio" name="m2_q1" value="2"></td>
+                <td><input type="radio" name="m2_q1" value="3"></td>
+                <td><input type="radio" name="m2_q1" value="4"></td>
+                <td><input type="radio" name="m2_q1" value="5"></td>
+              </tr>
+              <tr>
+                <td>¿Cómo medís y controláis mermas y reprocesos (nivel de control y reporting)?</td>
+                <td><input type="radio" name="m2_q2" value="1"></td>
+                <td><input type="radio" name="m2_q2" value="2"></td>
+                <td><input type="radio" name="m2_q2" value="3"></td>
+                <td><input type="radio" name="m2_q2" value="4"></td>
+                <td><input type="radio" name="m2_q2" value="5"></td>
+              </tr>
+              <tr>
+                <td>¿Tenéis implantado control de trazabilidad por lote/serie y liberación de lote (SPC/NC/8D)?</td>
+                <td><input type="radio" name="m2_q3" value="1"></td>
+                <td><input type="radio" name="m2_q3" value="2"></td>
+                <td><input type="radio" name="m2_q3" value="3"></td>
+                <td><input type="radio" name="m2_q3" value="4"></td>
+                <td><input type="radio" name="m2_q3" value="5"></td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+
+        <fieldset>
+          <legend>B) Preguntas operativas (texto)</legend>
+          <div class="q"><label>¿Cómo planificáis hoy (MRP/Excel) y con qué horizonte (semanal/mensual/campaña)?</label><textarea name="m2_planificacion"></textarea></div>
+          <div class="q"><label>¿Con cuántas líneas y turnos de producción trabajáis?</label><textarea name="m2_lineas_turnos"></textarea></div>
+          <div class="q"><label>¿Cuáles son los cuellos de botella habituales (materia prima, hornos/secaderos, envasado, personal, energía)?</label><textarea name="m2_cuellos_botella"></textarea></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Top tres procesos de fricción (Producción)</legend>
+          <div class="q"><label>Proceso 1</label><input type="text" name="m2_proc1" placeholder="Ej.: Cambios de formato / setups"><textarea name="m2_desc1" placeholder="¿Qué ocurre? ¿Dónde se atasca?"></textarea><select name="m2_imp1"><option value="">Impacto…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select></div>
+          <div class="q"><label>Proceso 2</label><input type="text" name="m2_proc2" placeholder="Ej.: Secaderos / hornos"><textarea name="m2_desc2" placeholder="¿Qué ocurre? ¿Dónde se atasca?"></textarea><select name="m2_imp2"><option value="">Impacto…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select></div>
+          <div class="q"><label>Proceso 3</label><input type="text" name="m2_proc3" placeholder="Ej.: Envasado / etiquetado"><textarea name="m2_desc3" placeholder="¿Qué ocurre? ¿Dónde se atasca?"></textarea><select name="m2_imp3"><option value="">Impacto…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preguntas estratégicas (6/12/24 meses)</legend>
+          <div class="q"><label>Digitalización en planta: ¿qué oportunidades veis (captura automática de datos, SPC en línea, checklists en tablet)?</label><textarea name="m2_est1"></textarea></div>
+          <div class="q"><label>Calidad y cumplimiento: ¿cómo abordáis IFS/BRC/ISO 22000 y auditorías? ¿Qué mejoraríais?</label><textarea name="m2_est2"></textarea></div>
+          <div class="q"><label>Mantenimiento y fiabilidad: iniciativas TPM/monitorización/predictivo clave.</label><textarea name="m2_est3"></textarea></div>
+          <div class="q"><label>Energía y sostenibilidad en procesos térmicos: medición actual y oportunidades de ahorro.</label><textarea name="m2_est4"></textarea></div>
+        </fieldset>
+      </section>
+      <!-- (Bloque 2 basado en tus masters) :contentReference[oaicite:6]{index=6} :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8} -->
+
+      <!-- ========================= BLOQUE 3 — COMPRAS & MATERIA PRIMA ========================= -->
+      <section id="b3" class="bloque">
+        <!-- Likert + estratégicas + fricciones consolidado -->
+        <!-- (extraído de tu “1-4” consolidado) -->
+        <fieldset>
+          <legend>3) Compras & Materia Prima</legend>
+          <p class="small">Resiliencia de la cadena de valor y compliance. Valore del 1 al 5 donde se indique.</p>
+          <table class="likert">
+            <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>¿Qué tan integradas están vuestras operaciones con proveedores clave para gestionar volatilidad de precios y suministro?</td>
+                <td><input type="radio" name="compras_integracion_proveedores" value="1" required></td>
+                <td><input type="radio" name="compras_integracion_proveedores" value="2"></td>
+                <td><input type="radio" name="compras_integracion_proveedores" value="3"></td>
+                <td><input type="radio" name="compras_integracion_proveedores" value="4"></td>
+                <td><input type="radio" name="compras_integracion_proveedores" value="5"></td>
+              </tr>
+              <tr>
+                <td>Capacidad para ofrecer trazabilidad extremo a extremo a clientes exigentes.</td>
+                <td><input type="radio" name="compras_trazabilidad_e2e" value="1" required></td>
+                <td><input type="radio" name="compras_trazabilidad_e2e" value="2"></td>
+                <td><input type="radio" name="compras_trazabilidad_e2e" value="3"></td>
+                <td><input type="radio" name="compras_trazabilidad_e2e" value="4"></td>
+                <td><input type="radio" name="compras_trazabilidad_e2e" value="5"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="q"><label>Riesgos externos y mitigación (clima, normativa, logística):</label><textarea name="compras_riesgos_mitigacion"></textarea></div>
+          <div class="q"><label>Compliance (e-factura ES, normativas internacionales) como ventaja competitiva:</label><textarea name="compras_cumplimiento_ventaja"></textarea></div>
+          <div class="q"><label>Colaboración proveedor para certificar origen y sostenibilidad (ERP):</label><textarea name="compras_erp_sostenibilidad"></textarea></div>
+
+          <h3 class="small">Top tres procesos de fricción</h3>
+          <div class="q"><label>Proceso 1</label><input type="text" name="compras_friccion1" placeholder="Ej.: Homologación de proveedores"><textarea name="compras_friccion1_desc"></textarea><select name="compras_friccion1_impacto"><option value="">Seleccione…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select></div>
+          <div class="q"><label>Proceso 2</label><input type="text" name="compras_friccion2" placeholder="Ej.: Gestión contractual / RFQ"><textarea name="compras_friccion2_desc"></textarea><select name="compras_friccion2_impacto"><option value="">Seleccione…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select></div>
+          <div class="q"><label>Proceso 3</label><input type="text" name="compras_friccion3" placeholder="Ej.: Documentación de exportación"><textarea name="compras_friccion3_desc"></textarea><select name="compras_friccion3_impacto"><option value="">Seleccione…</option><option>Alto</option><option>Medio</option><option>Bajo</option></select></div>
+          <div class="q"><label>Observaciones</label><textarea name="compras_obs" rows="3"></textarea></div>
+        </fieldset>
+      </section>
+      <!-- (Bloque 3) :contentReference[oaicite:9]{index=9} -->
+
+      <!-- ========================= BLOQUE 4 — CULTURA DEL DATO & DIGITALIZACIÓN ========================= -->
+      <section id="b4" class="bloque">
+        <fieldset>
+          <legend>4) Cultura del Dato & Digitalización</legend>
+          <table class="likert">
+            <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>¿En qué medida están integrados vuestros sistemas de información, permitiendo visión única del cliente y rentabilidad?</td>
+                <td><input type="radio" name="bi_integracion_sistemas" value="1" required></td>
+                <td><input type="radio" name="bi_integracion_sistemas" value="2"></td>
+                <td><input type="radio" name="bi_integracion_sistemas" value="3"></td>
+                <td><input type="radio" name="bi_integracion_sistemas" value="4"></td>
+                <td><input type="radio" name="bi_integracion_sistemas" value="5"></td>
+              </tr>
+              <tr>
+                <td>Capacidad actual para personalizar la experiencia del cliente a gran escala en canales digitales.</td>
+                <td><input type="radio" name="bi_personalizacion_escala" value="1" required></td>
+                <td><input type="radio" name="bi_personalizacion_escala" value="2"></td>
+                <td><input type="radio" name="bi_personalizacion_escala" value="3"></td>
+                <td><input type="radio" name="bi_personalizacion_escala" value="4"></td>
+                <td><input type="radio" name="bi_personalizacion_escala" value="5"></td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+      </section>
+      <!-- (Bloque 4) :contentReference[oaicite:10]{index=10} -->
+
+      <div class="actions">
+        <button type="button" class="btn secondary" id="prev">Volver</button>
+        <button type="button" class="btn secondary" id="next">Siguiente</button>
+        <button type="submit" class="btn primary" id="enviar" style="display:none">Enviar</button>
       </div>
+    </form>
 
-      <!-- Formulario (Formspree) -->
-      <form id="frm" action="https://formspree.io/f/xqadrqzl" method="POST">
-        <!-- Redirección tras enviar -->
-        <input type="hidden" name="_redirect" value="https://angelmartin005-crypto.github.io/herpac-checklist/gracias.html">
+    <!-- ====== Footer logos ====== -->
+    <div class="footer-logos" style="display:none" id="footer">
+      <img src="activos/logotipo_herpac.svg" alt="HERPAC">
+      <img src="activos/logo_td.svg" alt="TD Consulting">
+    </div>
 
-        <!-- ================== BLOQUE 1 ================== -->
-        <fieldset class="bloque active" id="b1">
-          <legend>Bloque 1 · Dirección & Objetivos</legend>
+  </div><!-- /.container -->
 
-          <div class="q">
-            <label>Valore del 1 al 5 el grado de implantación/madurez. El texto entre paréntesis aclara el concepto.</label>
-            <table class="likert">
-              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
-
-              <tr>
-                <td>¿Existen objetivos estratégicos cuantificados y horizonte definido? (foco)</td>
-                <td><input type="radio" name="b1_objetivos" value="1" required></td>
-                <td><input type="radio" name="b1_objetivos" value="2"></td>
-                <td><input type="radio" name="b1_objetivos" value="3"></td>
-                <td><input type="radio" name="b1_objetivos" value="4"></td>
-                <td><input type="radio" name="b1_objetivos" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿Se hace seguimiento de KPIs con cadencia fija? (ritmo/seguimiento)</td>
-                <td><input type="radio" name="b1_kpis" value="1" required></td>
-                <td><input type="radio" name="b1_kpis" value="2"></td>
-                <td><input type="radio" name="b1_kpis" value="3"></td>
-                <td><input type="radio" name="b1_kpis" value="4"></td>
-                <td><input type="radio" name="b1_kpis" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿La accountability convierte intención en resultados medibles a 6/12/24 meses?</td>
-                <td><input type="radio" name="b1_acc" value="1" required></td>
-                <td><input type="radio" name="b1_acc" value="2"></td>
-                <td><input type="radio" name="b1_acc" value="3"></td>
-                <td><input type="radio" name="b1_acc" value="4"></td>
-                <td><input type="radio" name="b1_acc" value="5"></td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="q">
-            <label>Proceso 1 (elige el más crítico)</label>
-            <input type="text" name="b1_proceso1" placeholder="Ej.: Recepción de materias primas">
-          </div>
-
-          <div class="q">
-            <label>Estado del proceso</label>
-            <select name="b1_estado_proceso1">
-              <option value="">Seleccione...</option>
-              <option>Estable</option>
-              <option>Con incidencias</option>
-              <option>En rediseño</option>
-            </select>
-          </div>
-
-          <div class="q">
-            <label>Notas</label>
-            <textarea name="b1_notas" placeholder="Qué pasa, dónde se atasca, impacto..."></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="button" class="btn secondary" data-prev>Volver</button>
-            <button type="button" class="btn primary" data-next>Siguiente</button>
-          </div>
-        </fieldset>
-        <!-- ================== /B1 ================== -->
-
-
-        <!-- ================== BLOQUE 2 ================== -->
-        <fieldset class="bloque" id="b2">
-          <legend>Bloque 2 · Producción & Calidad</legend>
-
-          <div class="q">
-            <label>Valore del 1 al 5 el grado de implantación/madurez.</label>
-            <table class="likert">
-              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
-
-              <tr>
-                <td>¿Control de mermas y reprocesos? (nivel de control)</td>
-                <td><input type="radio" name="b2_mermas" value="1" required></td>
-                <td><input type="radio" name="b2_mermas" value="2"></td>
-                <td><input type="radio" name="b2_mermas" value="3"></td>
-                <td><input type="radio" name="b2_mermas" value="4"></td>
-                <td><input type="radio" name="b2_mermas" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿SPC/NC/8D implantado con liberación por lote/serie? (trazabilidad)</td>
-                <td><input type="radio" name="b2_spc" value="1" required></td>
-                <td><input type="radio" name="b2_spc" value="2"></td>
-                <td><input type="radio" name="b2_spc" value="3"></td>
-                <td><input type="radio" name="b2_spc" value="4"></td>
-                <td><input type="radio" name="b2_spc" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿Medición de rendimientos por corte/producto? (OEE/escandallos)</td>
-                <td><input type="radio" name="b2_oee" value="1" required></td>
-                <td><input type="radio" name="b2_oee" value="2"></td>
-                <td><input type="radio" name="b2_oee" value="3"></td>
-                <td><input type="radio" name="b2_oee" value="4"></td>
-                <td><input type="radio" name="b2_oee" value="5"></td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="q">
-            <label>Proceso clave en fábrica</label>
-            <input type="text" name="b2_proceso1" placeholder="Ej.: Despiece / Envasado / Etiquetado">
-          </div>
-
-          <div class="q">
-            <label>Estado del proceso</label>
-            <select name="b2_estado_proceso1">
-              <option value="">Seleccione...</option>
-              <option>Estable</option>
-              <option>Con incidencias</option>
-              <option>En rediseño</option>
-            </select>
-          </div>
-
-          <div class="q">
-            <label>Notas</label>
-            <textarea name="b2_notas" placeholder="Cuellos de botella, scrap, re-trabajos, etc."></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="button" class="btn secondary" data-prev>Volver</button>
-            <button type="button" class="btn primary" data-next>Siguiente</button>
-          </div>
-        </fieldset>
-        <!-- ================== /B2 ================== -->
-
-
-        <!-- ================== BLOQUE 3 ================== -->
-        <fieldset class="bloque" id="b3">
-          <legend>Bloque 3 · Compras & Materia Prima</legend>
-
-          <div class="q">
-            <label>Valore del 1 al 5 el grado de implantación/madurez.</label>
-            <table class="likert">
-              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
-
-              <tr>
-                <td>¿Homologación de proveedores con métricas? (calidad/servicio)</td>
-                <td><input type="radio" name="b3_homolog" value="1" required></td>
-                <td><input type="radio" name="b3_homolog" value="2"></td>
-                <td><input type="radio" name="b3_homolog" value="3"></td>
-                <td><input type="radio" name="b3_homolog" value="4"></td>
-                <td><input type="radio" name="b3_homolog" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿Coberturas / stock de seguridad definidos? (roturas vs obsolescencia)</td>
-                <td><input type="radio" name="b3_cob" value="1" required></td>
-                <td><input type="radio" name="b3_cob" value="2"></td>
-                <td><input type="radio" name="b3_cob" value="3"></td>
-                <td><input type="radio" name="b3_cob" value="4"></td>
-                <td><input type="radio" name="b3_cob" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿Cadena de frío / trazabilidad por lote/control organoléptico?</td>
-                <td><input type="radio" name="b3_frio" value="1" required></td>
-                <td><input type="radio" name="b3_frio" value="2"></td>
-                <td><input type="radio" name="b3_frio" value="3"></td>
-                <td><input type="radio" name="b3_frio" value="4"></td>
-                <td><input type="radio" name="b3_frio" value="5"></td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="q">
-            <label>Materia prima crítica</label>
-            <input type="text" name="b3_mp_critica" placeholder="Ej.: Atún / Caballa / Sal / Envase...">
-          </div>
-
-          <div class="q">
-            <label>Incidencias frecuentes</label>
-            <select name="b3_incidencias">
-              <option value="">Seleccione...</option>
-              <option>Roturas de stock</option>
-              <option>Variabilidad de calidad</option>
-              <option>Plazos de entrega</option>
-              <option>Precio / negociación</option>
-            </select>
-          </div>
-
-          <div class="q">
-            <label>Notas</label>
-            <textarea name="b3_notas" placeholder="Detalle incidencias y su impacto en producción/servicio."></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="button" class="btn secondary" data-prev>Volver</button>
-            <button type="button" class="btn primary" data-next>Siguiente</button>
-          </div>
-        </fieldset>
-        <!-- ================== /B3 ================== -->
-
-
-        <!-- ================== BLOQUE 4 ================== -->
-        <fieldset class="bloque" id="b4">
-          <legend>Bloque 4 · Cultura del Dato & Digitalización</legend>
-
-          <div class="q">
-            <label>Valore del 1 al 5 el grado de implantación/madurez.</label>
-            <table class="likert">
-              <tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
-
-              <tr>
-                <td>¿Integración entre sistemas (ERP–MES–CRM–BI)?</td>
-                <td><input type="radio" name="b4_integracion" value="1" required></td>
-                <td><input type="radio" name="b4_integracion" value="2"></td>
-                <td><input type="radio" name="b4_integracion" value="3"></td>
-                <td><input type="radio" name="b4_integracion" value="4"></td>
-                <td><input type="radio" name="b4_integracion" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿Gobierno del dato (definiciones, calidad, custodios, catálogo)?</td>
-                <td><input type="radio" name="b4_gobierno" value="1" required></td>
-                <td><input type="radio" name="b4_gobierno" value="2"></td>
-                <td><input type="radio" name="b4_gobierno" value="3"></td>
-                <td><input type="radio" name="b4_gobierno" value="4"></td>
-                <td><input type="radio" name="b4_gobierno" value="5"></td>
-              </tr>
-
-              <tr>
-                <td>¿Cuadros de mando/Power BI operativos para decisión?</td>
-                <td><input type="radio" name="b4_bi" value="1" required></td>
-                <td><input type="radio" name="b4_bi" value="2"></td>
-                <td><input type="radio" name="b4_bi" value="3"></td>
-                <td><input type="radio" name="b4_bi" value="4"></td>
-                <td><input type="radio" name="b4_bi" value="5"></td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="q">
-            <label>Área con mayor potencial de digitalización</label>
-            <select name="b4_area">
-              <option value="">Seleccione...</option>
-              <option>Producción</option>
-              <option>Compras/Almacén</option>
-              <option>Calidad/Seguridad Alimentaria</option>
-              <option>Comercial/CRM</option>
-              <option>Finanzas/BI</option>
-            </select>
-          </div>
-
-          <div class="q">
-            <label>Notas</label>
-            <textarea name="b4_notas" placeholder="Quick wins, riesgos, ideas de automatización..."></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="button" class="btn secondary" data-prev>Volver</button>
-            <button type="submit" class="btn primary">Enviar</button>
-          </div>
-        </fieldset>
-        <!-- ================== /B4 ================== -->
-
-      </form>
-    </section>
-    <!-- ================== /CHECKLIST ================== -->
-
-  </main>
-
-  <!-- Footer con logos -->
-  <footer class="footer-logos">
-    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC">
-    <img src="activos/imagen/logo_td.svg" alt="TD Consulting">
-  </footer>
-
-  <!-- Navegación y RGPD -->
   <script>
-    // 1) Control RGPD → mostrar checklist
-    const btnComenzar = document.getElementById('btn-comenzar');
-    const pantallaRGPD = document.getElementById('pantalla-rgpd');
-    const seccionChecklist = document.getElementById('seccion-checklist');
+    // Habilitar comenzar al aceptar RGPD
+    const chk = document.getElementById('acepto');
+    const btn = document.getElementById('btnComenzar');
+    chk.addEventListener('change', () => { btn.disabled = !chk.checked; });
 
-    btnComenzar.addEventListener('click', () => {
-      if (!document.getElementById('rgpd_ok').checked) {
-        alert('Debes aceptar el RGPD para continuar.');
-        return;
-      }
-      pantallaRGPD.style.display = 'none';
-      seccionChecklist.style.display = 'block';
+    // Mostrar formulario y tabs al pulsar Comenzar
+    btn.addEventListener('click', () => {
+      document.getElementById('rgpd').style.display = 'none';
+      document.getElementById('tabs').style.display = 'flex';
+      document.getElementById('formTD360').style.display = 'block';
+      document.getElementById('footer').style.display = 'flex';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 2) Navegación bloques (stepper y botones)
+    // Navegación por bloques
+    const tabs = Array.from(document.querySelectorAll('#tabs button'));
     const bloques = Array.from(document.querySelectorAll('.bloque'));
-    const steps = Array.from(document.querySelectorAll('.stepper .step'));
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const enviar = document.getElementById('enviar');
 
-    function mostrarBloque(idx) {
-      bloques.forEach((b, i) => b.classList.toggle('active', i === idx));
-      steps.forEach((s, i) => s.classList.toggle('active', i === idx));
+    function activate(i){
+      bloques.forEach((b,idx)=>b.classList.toggle('active', idx===i));
+      tabs.forEach((t,idx)=>t.classList.toggle('active', idx===i));
+      prev.style.display = i===0 ? 'none' : 'inline-block';
+      next.style.display = i===bloques.length-1 ? 'none' : 'inline-block';
+      enviar.style.display = i===bloques.length-1 ? 'inline-block' : 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    steps.forEach((btn, i) => btn.addEventListener('click', () => mostrarBloque(i)));
-    document.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', () => {
-      const cur = bloques.findIndex(b => b.classList.contains('active'));
-      mostrarBloque(Math.min(cur + 1, bloques.length - 1));
-    }));
-    document.querySelectorAll('[data-prev]').forEach(btn => btn.addEventListener('click', () => {
-      const cur = bloques.findIndex(b => b.classList.contains('active'));
-      mostrarBloque(Math.max(cur - 1, 0));
-    }));
+    let idx = 0; activate(idx);
+    tabs.forEach((t,i)=>t.addEventListener('click', ()=>{ idx=i; activate(idx); }));
+    prev.addEventListener('click', ()=>{ if(idx>0){ idx--; activate(idx);} });
+    next.addEventListener('click', ()=>{ if(idx<bloques.length-1){ idx++; activate(idx);} });
   </script>
 </body>
 </html>
+
 
 
 
