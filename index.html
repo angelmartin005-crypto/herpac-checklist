@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check List TD360º – Consentimiento RGPD</title>
 
-  <!-- Ruta base de tu GitHub Pages -->
+  <!-- BASE con barra final y exacto nombre del repo -->
   <base href="https://angelmartin005-crypto.github.io/herpac-checklist/">
 
-  <!-- Estilos del proyecto -->
-  <link rel="stylesheet" href="activos/estilos.css?v=6" />
+  <!-- CSS con versión para romper caché -->
+  <link rel="stylesheet" href="activos/estilos.css?v=7">
 </head>
 <body>
+
+  <!-- Encabezado con logos -->
   <header class="header">
-    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC" class="logo" />
+    <img src="activos/imagen/logo_herpac.svg" alt="HERPAC" class="logo">
     <div class="titlewrap"><h1 class="title">Check List TD360º</h1></div>
-    <img src="activos/imagen/logo_td.svg" alt="TD Consulting" class="logo" />
+    <img src="activos/imagen/logo_td.svg" alt="TD Consulting" class="logo">
   </header>
 
+  <!-- Contenido principal -->
   <main class="container">
     <section class="card intro">
       <h2>Consentimiento RGPD</h2>
@@ -26,9 +29,19 @@
       </p>
 
       <div class="rgpd check">
-        <input type="checkbox" id="rgpd_ok" />
-        <label for="rgpd_ok">He leído y acepto el texto completo RGPD.</label>
+        <input type="checkbox" id="rgpd_ok">
+        <label for="rgpd_ok">
+          He leído y acepto el <a href="#rgpd-texto" onclick="document.getElementById('rgpd_det').open = true">texto completo RGPD</a>.
+        </label>
       </div>
+
+      <!-- Texto RGPD completo (plegable) -->
+      <details id="rgpd_det" class="small" style="margin-top:10px;">
+        <summary id="rgpd-texto">Texto completo RGPD</summary>
+        <p>
+          Conforme a lo previsto en el nuevo Reglamento General de Protección de Datos de entrada en vigor el 25 de mayo de 2018, sus datos están incluidos en un fichero cuyo nivel de seguridad cumple el RGPD y su finalidad es el CONTROL Y GESTION DE CLIENTES/PROVEEDORES Y POTENCIALES CLIENTES, ASESORAMIENTO E INFORMACION ACERCA DE LOS PRODUCTOS Y SERVICIOS DE LA EMPRESA Y LA FIDELIZACION DE CLIENTES. A su vez, podrá ejercitar los derechos de acceso, rectificación, supresión (derecho al olvido), oposición y de revocación del consentimiento incluidos en el Reglamento General de Protección de Datos de forma gratuita dirigiéndose a la siguiente dirección : C/ Escritora Gertrudis Gómez de Avellaneda 28, CP: 29196 Málaga o a rgpd@topdigital.com junto con prueba válida en derecho, como fotocopia del D.N.I. e indicando en el asunto "PROTECCIÓN DE DATOS". o través del siguiente enlace web (ejericioderechos)
+        </p>
+      </details>
 
       <div class="actions" style="justify-content:flex-end">
         <button class="btn primary" id="go">Comenzar diagnóstico</button>
@@ -36,21 +49,25 @@
     </section>
   </main>
 
+  <!-- Pie con logos -->
   <footer class="footer-logos">
     <img src="activos/imagen/logo_herpac.svg" alt="HERPAC">
     <img src="activos/imagen/logo_td.svg" alt="TD Consulting">
   </footer>
 
+  <!-- Lógica: exigir RGPD y pasar a checklist -->
   <script>
     document.getElementById('go').addEventListener('click', () => {
       if (!document.getElementById('rgpd_ok').checked) {
-        alert('Debes aceptar el RGPD para continuar.'); return;
+        alert('Debes aceptar el RGPD para continuar.');
+        return;
       }
       window.location.href = 'checklist.html';
     });
   </script>
 </body>
 </html>
+
 
 
 
